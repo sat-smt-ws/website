@@ -1,0 +1,165 @@
+Markus Rabe:
+
+Title: QBF Certification and Synthesis of Boolean Functions
+
+Abstract: A certificate for a quantified Boolean formula (QBF) is a Skolem function mapping assignments to the universal variables to assignments to the existential variables, such that the function makes the formula valid. QBF certification can thus be seen as a process to synthesize a Boolean function. In the first part of this tutorial, I will discuss recent progress in algorithms for 2QBF that enable effective certification. In parts two and three, I will discuss 'functional synthesis' and 'Dependency QBF', two extensions of QBF that enable  to synthesize more general quantified Boolean formulas. 
+
+----------------------
+
+
+Saurabh Joshi:
+
+Title: Gerneralized Totalizer Encoding for Pseudo-Boolean Constraints
+
+Abstract: In this talk I will present a generalization of Totalizer Encoding which is primarily used in cardinality constraints. The generalization of this encoding makes it suitable to encode Pseudo-Boolean constraints. This generalization is insensitive to the magnitude of the weights in the constraints, and is likely to perform well when the number of weight combinations are low. We show experimental results in support of our claim. This work was published in CP 2015. This encoding also helped OpenWBO secure 3rd position in PB 2016 evaluations.
+
+
+
+----------------------
+
+Florian Lonsing:
+
+TITLE: An Introduction to QBF Solving
+
+
+
+ABSTRACT:
+
+The logic of quantified Boolean formulas (QBF) extends propositional logic by 
+explicit existential or universal quantification of propositional 
+variables. The satisfiability problem of QBF is PSPACE-complete. Therefore,
+QBFs are a natural formalism to encode problems from the complexity class
+PSPACE or from subclasses in the polynomial hierarchy. QBF encodings of
+problems are potentially exponentially more succinct than encodings in
+propositional logic.
+
+In this tutorial, we present an introduction to quantified Boolean formula
+(QBF) solving. Thereby, we focus on search-based QBF solving, which has its
+roots in the DPLL algorithm published in the 1960s. Modern search-based
+approaches implement conflict-driven clause learning (QCDCL). In QCDCL
+backtracking search is coupled with Q-resolution, a QBF proof system, to
+systematically derive new learned clauses from a formula. We outline the
+evolution from basic backtracking search to modern QCDCL. Additionally we
+present selected topics related to QBF applications such as preprocessing and
+certificate extraction. In the hands-on session, the participants are
+encouraged to implement parts of a QBF preprocessing tool in C.
+
+----------------------
+
+Nikolaj Bjorner:
+
+Title: Quantified Satisfiability Modulo Theories
+
+Abstract: The tutorial examines a repertoire of search procedures used
+in the state-of-art Satisfiability Modulo Theories, SMT, solver Z3 for 
+checking satisfiability of quantified formulas modulo theories. We 
+present four main approaches used to solve different classes of 
+quantified SMT formulas. Matching modulo ground equalities, known 
+as E-matching, is a central workhorse used for finding useful instances 
+of quantifiers. It uses code-trees to efficiently index and execute 
+pattern matching during search. Model-based quantifier instantiation 
+uses partial information gathered during search to check if quantified 
+assumptions can be satisfied, or otherwise produce new instances that 
+can prune the set of possible feasible assignments. Third, we show how 
+satisfiability of nested quantifiers can be solved by importing algorithms 
+developed in the context of quantified Boolean formulas into theories 
+(such as, linear real, linear integer, non-linear real, algebraic data-types).
+Finally, we touch on approaches for solving quantified Horn clauses
+using algorithms developed in the context of symbolic model checking.
+
+The tutorial will offer first-hand insights into central inner workings
+of quantified SMT. It will also offer hands on experiences within some
+of the fragments handled by the described approaches.
+
+Z3 is an open source SMT solver. It is available 
+from https://github.com/z3prover/bin.
+
+-------------------------
+
+Charles B M
+
+Title: Loop Acceleration for C Programs in the Presence of Overflows
+
+Abstract: Loop acceleration is a symbolic technique for synthesizing a loop-free closed form expression
+representing the cumulative behavior of a given loop. This problem can be formalized in
+terms of solution to a (nested) quantified SMT formula. It has been shown that for a class
+of overflow-free C programs with restrictions on the form of expressions in assignment and
+conditional statements, this problem can be reduced to quantifier-free SMT solving. Presence
+of overflow complicates the quantifier elimination problem and introduces the need to check for
+termination of loop. We show how under certain conditions the required quantifier elimination
+can be accomplished without resorting to model enumeration.
+
+-----------------------
+
+Adnan Darwiche:
+
+Title: On the Role of Logic in Probabilistic Inference and Machine Learning
+
+Abstract:
+I will discuss in this tutorial some fundamental roles of formal logic in probabilistic inference and machine learning. In particular, I will discuss four key probabilistic queries that are complete for the complexity classes NP, PP, NP^PP and PP^PP, showing how each of these probabilistic queries can be practically reduced to queries on logical formula. The treatment of these queries will be systematic and based on compiling corresponding problems into Boolean circuits with increasingly strong properties that guarantee linear-time probabilistic inference. I will also link the proposed approach to the recent "Beyond NP" initiative that calls for a similar systematic treatment when handling computational problems that are harder than NP. On the machine learning front, I will show how the proposed approach can be used to: (a) learn statistical models from a combination of data and background knowledge (expressed using logical constraints); (b) learn from a new class of more expressive datasets; and (c) estimate parameters in closed-form in some cases. The tutorial will include a number of case studies and experimental results, showing the broad scope and competitiveness of the proposed techniques, while also highlighting situations where they are now the state of the art.
+
+
+----------------------
+
+Manasij Mukherjee:
+
+Title : Interprocedural Bounded-Model-Checking (BMC) with context sensitive function summaries
+
+Abstract: In this talk, I will discuss a technique for Bounded-Model-Checking (BMC) that does not require traversing and inlining whole function bodies at each call site. This is achieved by computing and composing a set of function summaries. Computing a function summary from a function body and a calling context can be considered a best-effort quantifier elimination problem.
+
+I plan to cover forward summaries that encapsulate the behavior of a function and property directed error summaries that can be used for checking weakest preconditions for an assertion failure. I will present some insight into the following questions we are studying.  (1) Can we use hybrid approaches that use over and under-approximations of function summaries? (2) Do such interprocedural BMC approaches perform better than conventional monolithic approaches that use inlining function bodies? It seems this is only possible with aggressive simplification and pruning of the summaries and verification conditions generated at each step. Determining the threshold for which this simplification becomes profitable is the goal of our ongoing work.
+
+----------------------
+
+Divyesh Unadkat:
+
+Title: Verifying Array Manipulating Programs by Tiling
+
+Brief Description:
+Formally verifying properties of programs that manipulate arrays in 
+loops is computationally challenging. We focus on a useful class of such 
+programs, and present a novel property-driven verification method that 
+first infers array access patterns in loops using simple heuristics, and 
+then uses this information to compositionally prove universally 
+quantified assertions about arrays. Specifically, we identify tiles of 
+array access patterns in a loop, and use the tiling information to 
+reduce the problem of checking a quantified assertion at the end of a 
+loop to an inductive argument that checks only a slice of the assertion 
+for a single iteration of the loop body. We use SMT solvers for this 
+check as well as for checking if the tiles cover the range of indices of 
+interest. We show that this method can be extended to programs with 
+sequentially composed loops and nested loops as well. We have 
+implemented our method in a tool called Tiler. Initial experiments show 
+that Tiler outperforms several state-of-the-art tools on a suite of 
+interesting benchmarks.
+
+This work is published in SAS 2017. Link to the paper:
+https://link.springer.com/chapter/10.1007/978-3-319-66706-5_21
+
+----------------------
+
+M.K. Srivas:
+
+Title: Loop Acceleration for C Programs
+
+Abstract: One of the main challenges in scaling formal verification to large programs lies in finding effective analysis techniques to handle loops.  Loop acceleration is one such technique where a loop is replaced by a piece of loop-free code representing (possibly an abstraction of) the cumulative behavior of the loop.  This problem can be formalized in terms of computing a "closed form" for the transitive closure of the loop body.  We describe an automatic method using SMT solving for loop acceleration of a certain restricted class of C programs.  We describe the challenges presence of overflow in C programs and the need for termination checking in the process pose in reducing this problem to SMT solving.  We describe the need for quantifier elimination and nonlinear SMT solving in our method and how we handle the same.
+
+M.K. Srivas will present the context of the work, formalization of the problem and the general method.  Charles M.B. will present more details of the method including handling of overflow as part of his student presentation.
+
+-------------------------
+
+Shetal Shah:
+
+Title: Towards Parallel Boolean Functional Synthesis
+
+Abstract: Given a relational specification $F(X, Y)$, where $X$ and $Y$
+are sequences of input and output variables, we wish to synthesize
+each output as a function of the inputs such that the specification
+holds. This is called the Boolean functional synthesis problem and has
+applications in several areas. We propose the first
+parallel approach for solving this problem, using compositional and
+CEGAR-style reasoning as key building blocks. We show by means of
+extensive experiments that our approach outperforms existing tools on
+a large class of benchmarks. 
+
+---------------------------

@@ -1,0 +1,41 @@
+[22-Sep-2017 12:17:41 UTC] PHP Notice:  Undefined index: acc in /home/satsmt2017/public_html/registration.php on line 148
+[22-Sep-2017 12:51:16 UTC] PHP Notice:  Undefined index: acc in /home/satsmt2017/public_html/registration.php on line 148
+[25-Sep-2017 08:43:19 UTC] PHP Parse error:  syntax error, unexpected '.' in /home/satsmt2017/public_html/registration.php on line 291
+[25-Sep-2017 08:45:54 UTC] PHP Notice:  Undefined variable: txt in /home/satsmt2017/public_html/registration.php on line 293
+[25-Sep-2017 08:45:55 UTC] PHP Parse error:  syntax error, unexpected '$line5' (T_VARIABLE) in /home/satsmt2017/public_html/reg_success.php on line 97
+[25-Sep-2017 08:47:57 UTC] PHP Notice:  Undefined variable: txt in /home/satsmt2017/public_html/registration.php on line 293
+[25-Sep-2017 08:48:45 UTC] PHP Notice:  Undefined variable: txt in /home/satsmt2017/public_html/registration.php on line 293
+[25-Sep-2017 09:32:40 UTC] PHP Notice:  Undefined index:  in /home/satsmt2017/public_html/registration.php on line 276
+[25-Sep-2017 09:32:40 UTC] PHP Notice:  Undefined variable: txt in /home/satsmt2017/public_html/registration.php on line 292
+[25-Sep-2017 09:41:03 UTC] PHP Notice:  Undefined index:  in /home/satsmt2017/public_html/registration.php on line 282
+[25-Sep-2017 09:45:32 UTC] PHP Notice:  Undefined index:  in /home/satsmt2017/public_html/registration.php on line 282
+[25-Sep-2017 09:45:32 UTC] PHP Warning:  mail() expects parameter 4 to be string, array given in /home/satsmt2017/public_html/registration.php on line 313
+[25-Sep-2017 09:49:22 UTC] PHP Notice:  Undefined index:  in /home/satsmt2017/public_html/registration.php on line 282
+[25-Sep-2017 09:49:22 UTC] PHP Warning:  mail() expects parameter 4 to be string, array given in /home/satsmt2017/public_html/registration.php on line 313
+[25-Sep-2017 09:49:29 UTC] PHP Notice:  Undefined variable: line5 in /home/satsmt2017/public_html/reg_success.php on line 106
+[25-Sep-2017 09:49:34 UTC] PHP Notice:  Undefined variable: line5 in /home/satsmt2017/public_html/reg_success.php on line 106
+[25-Sep-2017 09:56:21 UTC] PHP Notice:  Undefined index:  in /home/satsmt2017/public_html/registration.php on line 282
+[25-Sep-2017 10:02:21 UTC] PHP Notice:  Undefined index:  in /home/satsmt2017/public_html/registration.php on line 282
+[25-Sep-2017 10:06:22 UTC] PHP Notice:  Undefined index:  in /home/satsmt2017/public_html/registration.php on line 282
+[25-Sep-2017 10:13:14 UTC] PHP Notice:  Undefined index:  in /home/satsmt2017/public_html/registration.php on line 282
+[25-Sep-2017 11:54:39 UTC] PHP Notice:  Undefined index:  in /home/satsmt2017/public_html/registration.php on line 282
+[25-Sep-2017 14:28:36 UTC] PHP Notice:  Undefined index:  in /home/satsmt2017/public_html/registration.php on line 282
+[26-Sep-2017 17:31:24 UTC] PHP Notice:  Undefined variable: line5 in /home/satsmt2017/public_html/reg_success.php on line 106
+[27-Sep-2017 16:07:34 UTC] PHP Notice:  Undefined variable: line5 in /home/satsmt2017/public_html/reg_success.php on line 106
+[05-Oct-2017 06:57:25 UTC] PHP Notice:  Undefined variable: line5 in /home/satsmt2017/public_html/reg_success.php on line 106
+[07-Oct-2017 16:48:36 UTC] PHP Notice:  Undefined variable: line5 in /home/satsmt2017/public_html/reg_success.php on line 106
+[12-Oct-2017 11:36:40 UTC] PHP Notice:  Undefined variable: line5 in /home/satsmt2017/public_html/reg_success.php on line 106
+[12-Oct-2017 11:37:25 UTC] PHP Notice:  Undefined variable: line5 in /home/satsmt2017/public_html/reg_success.php on line 106
+[19-Oct-2017 22:08:03 UTC] PHP Notice:  Undefined variable: line5 in /home/satsmt2017/public_html/reg_success.php on line 106
+[30-Oct-2017 11:58:16 UTC] PHP Notice:  Undefined variable: line5 in /home/satsmt2017/public_html/reg_success.php on line 106
+[30-Oct-2017 12:35:16 UTC] PHP Notice:  Undefined variable: line5 in /home/satsmt2017/public_html/reg_success.php on line 106
+[31-Oct-2017 10:36:43 UTC] PHP Notice:  Undefined variable: line5 in /home/satsmt2017/public_html/reg_success.php on line 106
+[09-Nov-2017 11:17:49 UTC] PHP Notice:  Undefined variable: line5 in /home/satsmt2017/public_html/reg_success.php on line 106
+[09-Nov-2017 11:18:10 UTC] PHP Notice:  Undefined variable: line5 in /home/satsmt2017/public_html/reg_success.php on line 106
+[10-Nov-2017 04:49:45 UTC] PHP Notice:  Undefined variable: line5 in /home/satsmt2017/public_html/reg_success.php on line 106
+[21-Nov-2017 05:14:54 UTC] PHP Notice:  Undefined variable: line5 in /home/satsmt2017/public_html/reg_success.php on line 106
+[21-Nov-2017 05:18:32 UTC] PHP Notice:  Undefined variable: line5 in /home/satsmt2017/public_html/reg_success.php on line 106
+[21-Nov-2017 05:19:10 UTC] PHP Notice:  Undefined variable: line5 in /home/satsmt2017/public_html/reg_success.php on line 106
+[21-Nov-2017 05:19:12 UTC] PHP Notice:  Undefined variable: line5 in /home/satsmt2017/public_html/reg_success.php on line 106
+[21-Nov-2017 05:19:19 UTC] PHP Notice:  Undefined variable: line5 in /home/satsmt2017/public_html/reg_success.php on line 106
+[08-Jan-2018 20:21:56 UTC] PHP Notice:  Undefined variable: line5 in /home/satsmt2017/public_html/reg_success.php on line 106

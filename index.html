@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"><title>SAT+SMTv2</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="India winter workshop on SAT SMT solvers including basic course on logic, tutorials on solvers by eminent scientists and developers, and latest research and applications centered around these solvers. The theme of the year is quantifiers in the solvers focused on Quantified Boolean Formulas, Quantifiers in SMT solvers and Quantified invariants in verification tools"/>
+
+	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css" type="text/css" />
+	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/lib/w3-colors-2017.css">
+
+	<style>
+		div {
+		   	margin-left : auto;
+			margin-right : auto;
+		}
+		
+		footer {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			padding: 1rem;
+		}
+
+		.anchor{
+			display:block;
+			height:163px; /* this is the height of your header */
+			margin-top:-163px; /* this is again negative value of the height of your header */
+			visibility:hidden;
+		}
+
+		@media screen and (max-width: 480px) {
+			.w3-content{
+				max-width:100%;
+			}
+		}
+		@media screen and (min-width: 480px) {
+			.w3-content{
+				max-width:75%;
+			}
+			.webmaster{
+				float:right;
+			}
+		}
+	</style>
+
+	<div id="topContainer" class="w3-container w3-theme-d4 w3-top">
+		<div class="w3-container w3-theme-d4 w3-border-bottom w3-mobile">
+		<div id="topBand" class="w3-container w3-theme-d4 w3-hide-small" style="width:75%">
+			<a target="_blank" href="https://indico.tifr.res.in/indico/conferenceDisplay.py?confId=5062" class="w3-button w3-padding-12 w3-theme-light w3-hover-blue-gray w3-right w3-margin-right">First SAT+SMT</a>
+			<button class="w3-button w3-theme-d4 w3-hover-blue-gray" onclick="topFunction()"><i class="fa fa-home w3-xlarge"></i></button>
+			<button class="w3-button w3-theme-d4 w3-hover-blue-gray" onclick="reloadFunction()"><i class="fa fa-refresh w3-large"></i></button>
+			<a href="#contact" class="w3-button w3-theme-d4 w3-hover-blue-gray"><i class="fa fa-envelope w3-large"></i></a>
+		</div>
+		</div>
+		
+		<div class="w3-container w3-theme-d4 w3-padding-16 w3-xxlarge w3-hide-small w3-hide-medium w3-mobile" style="width:75%">
+			The Second Indian SAT+SMT School
+		</div>
+	
+		<div class="w3-container w3-theme-d4 w3-border-bottom w3-mobile">
+		<div id="topBand" class="w3-container w3-theme-d4 w3-hide-medium w3-hide-large">
+			<a target="_blank" href="https://indico.tifr.res.in/indico/conferenceDisplay.py?confId=5062" class="w3-button w3-theme-light w3-hover-blue-gray w3-right">First SAT+SMT</a>
+			<button class="w3-button w3-theme-d4 w3-hover-blue-gray" onclick="topFunction()"><i class="fa fa-home w3-large"></i></button>
+			<a href="#contact" class="w3-button w3-theme-d4 w3-hover-blue-gray"><i class="fa fa-envelope w3-medium"></i></a>
+		</div>
+		</div>
+		
+		<div class="w3-container w3-theme-d4 w3-padding-16 w3-large w3-hide-large w3-mobile" style="width:75%">
+			The Second Indian SAT+SMT School
+		</div>
+	</div>
+
+	<div id="secondBand" class="w3-container w3-theme-l4 w3-border-bottom w3-border-blue-gray w3-mobile">
+		<div class="w3-container w3-theme-l4" style="width:75%">
+			<font color=#000033>05-07 December 2018<br>Hyderabad, Telangana<br></font><font color=#808080 size=2>Asia/Kolkata timezone</font>
+		</div>
+	</div>
+
+	<div id="collapsed_menu" class="w3-bar w3-top w3-medium w3-margin0 w3-theme-d2 w3-border w3-border-black w3-hide-large">
+		<div class="w3-bar-item">Menu</div>
+		<a href="javascript:void(0)" class="w3-bar-item w3-button w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+	</div>
+
+	<!--/div-->
+</head>
+
+<body>
+
+<div class="w3-content">
+
+	<!-- Sidebar/menu -->
+	<nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-animate-left" style="z-index:3;width:250px;margin-top:30px" id="mySidebar">
+		<div class="w3-container w3-display-container w3-padding-16">
+			<i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
+		</div>
+		<div >
+			<a href="#" class="w3-bar-item w3-button w3-border-bottom w3-hover-none w3-hover-text-red w3-bottombar w3-hover-border-blue-gray" onclick="w3_close()">About SAT+SMTv2</a>
+			<a href="#venue" class="w3-bar-item w3-button w3-border-bottom w3-hover-none w3-hover-text-red w3-bottombar w3-hover-border-blue-gray" onclick="w3_close()">Venue</a>
+			<a href="#tutorials" class="w3-bar-item w3-button w3-border-bottom w3-hover-none w3-hover-text-red w3-bottombar w3-hover-border-blue-gray" onclick="w3_close()">Invited Tutorials</a>
+			<a href="#programme" class="w3-bar-item w3-button w3-border-bottom w3-hover-none w3-hover-text-red w3-bottombar w3-hover-border-blue-gray" onclick="w3_close()">Programme</a>
+			<a href="registration.php" class="w3-bar-item w3-button w3-border-bottom w3-hover-none w3-hover-text-red w3-bottombar w3-hover-border-blue-gray" onclick="w3_close()">Registration</a>
+			<a href="feesubmission.html" class="w3-bar-item w3-button w3-border-bottom w3-hover-none w3-hover-text-red w3-bottombar w3-hover-border-blue-gray" onclick="w3_close()">Registration Fee Submission</a>
+			<a href="#accommodation" class="w3-bar-item w3-button w3-border-bottom w3-hover-none w3-hover-text-red w3-bottombar w3-hover-border-blue-gray" onclick="w3_close()">Accommodation</a>
+			<a href="#impdates" class="w3-bar-item w3-button w3-border-bottom w3-hover-none w3-hover-text-red w3-bottombar w3-hover-border-blue-gray" onclick="w3_close()">Important Dates</a>
+			<a href="#organizers" class="w3-bar-item w3-button w3-border-bottom w3-hover-none w3-hover-text-red w3-bottombar w3-hover-border-blue-gray" onclick="w3_close()">Organizers & Sponsors</a>
+			<a href="#contact" class="w3-bar-item w3-button w3-border-bottom w3-hover-none w3-hover-text-red w3-bottombar w3-hover-border-blue-gray" onclick="w3_close()">Contact</a>
+		</div>
+	</nav>
+
+	<!-- Overlay effect when opening sidebar on small screens -->
+	<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+	<!-- !PAGE CONTENT! -->
+	<div class="w3-main" style="margin-left:270px">
+
+	<!-- Push down content on small screens -->
+	<div class="w3-hide-large" style="margin-top:50px"></div>
+
+	<div id="about" class="w3-panel w3-white w3-border-bottom w3-border-theme-d4 w3-padding-32 w3-animate-right" style="text-align:justify">
+	<font color=#1C2833>
+		<h2>About SAT+SMT</h2>
+		SAT and SMT solvers are the backbone of a wide range of academic and industrial R&D activities today.  These include software and hardware verification, logistics, planning, operations research, non-linear discrete optimization, model counting, etc. Recent developments in the field suggest that these solvers may soon be leveraged in an even wider range of applications that touch almost all aspects of computing. Unfortunately, in India, the technical study of these solvers is limited to a few individuals/groups. This has hampered the growth of research and development in this area, both in the Indian academia and in the Indian industry. Keeping in view of this gap, we are organizing a workshop series on SAT+SMT solvers that will include basic courses on logic, tutorials on solvers by eminent scientists and developers from around the world, and latest research and applications centered around these solvers.
+          The theme of the year is quantifiers in the solvers. We will have tutorials on:</p></p>
+		<ul>
+			<li>Quantified Boolean Formulas</li>
+			<li>Quantifiers in SMT solvers</li>
+			<li>Quantified invariants in verification tools</li>
+		</ul>
+		Please find the detailed programme in the left menu.
+	</font>
+	</div>
+
+        <span class="anchor" id="venue"></span>
+        
+	<div id="venueContent" class="w3-panel w3-white w3-border-bottom w3-border-theme-d4 w3-padding-32 w3-animate-right">
+	<font color=#1C2833>
+		<h2>Venue</h2>
+		IIIT-H,<br>Beside Gachibowli Stadium,<br>KBR 4th floor,<br>Hyderabad,<br>Telangana<br>
+			<div class="w3-container w3-hide-small">
+				<p><br><img src="iiit.jpeg"/>
+			</div>
+			<div class="w3-container w3-hide-medium w3-hide-large">
+				<p><br><img src="iiit.jpeg" width="100%"/></p>
+			</div>
+		<p>IIIT-H campus is located in the remote areas of Hyderabad city and is approximately 60-70 acres big. The closest international airport is the Rajiv Gandhi International Airport, which is about 40-50 mins from the campus by cab.</p>
+          <b>Full address</b> IIIT-Hyderabad, beside gachibowli stadium, Hyderabad, Telangana, 500032<br><br>
+          <iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=iiit&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+		<p><i>For a detailed guide on how to reach is available under <a href="#accommodation">accommodation</a></i></p>
+	</font>
+	</div>
+
+	<span class="anchor" id="tutorials"></span>
+
+	<div id="tutorialsContent" class="w3-panel w3-white w3-border-bottom w3-border-theme-d4 w3-padding-32 w3-animate-right">
+	<font color=#1C2833>
+		<h2>Invited Tutorials</h2>
+		<button id="bjorner" class="w3-block w3-white w3-border w3-border-white w3-hover-light-grey" onclick="window.location.href='https://www.microsoft.com/en-us/research/people/nbjorner/'">
+			<div class="w3-row-padding w3-centered">
+				<div class="w3-half">
+					<img src="#"  alt="To be added" height=150>
+				</div>
+				<div class="w3-half">
+					<p><b>Vijay Ganesh</b></p>
+					<p>Talk Title: <i>Quantified Satisfiability Modulo Theories</i></p>
+				</div>
+			</div>
+		</button>
+		<button onclick="openAbstract('bjorner_abstract')" class="w3-button" style="width:100%">Abstract & Presentation</button>
+		<div id="bjorner_abstract" class="w3-panel w3-display-container w3-border" style="text-align:justify;display:none">
+			<span onclick="this.parentElement.style.display='none'"	class="w3-button w3-theme w3-display-topright">x</span>
+			<span onclick="window.location.href='http://theory.stanford.edu/~nikolaj/q.html'" class="w3-button w3-theme w3-display-topleft"><font color="black"> Go to slides</font> <img src="filessave.png" height="20px"/></span>
+				<p><br><br>The tutorial examines a repertoire of search procedures used in the state-of-art Satisfiability Modulo Theories, SMT, solver Z3 for checking satisfiability of quantified formulas modulo theories. We present four main approaches used to solve different classes of quantified SMT formulas. Matching modulo ground equalities, known as E-matching, is a central workhorse used for finding useful instances of quantifiers. It uses code-trees to efficiently index and execute pattern matching during search. Model-based quantifier instantiation uses partial information gathered during search to check if quantified assumptions can be satisfied, or otherwise produce new instances that can prune the set of possible feasible assignments. Third, we show how satisfiability of nested quantifiers can be solved by importing algorithms developed in the context of quantified Boolean formulas into theories (such as, linear real, linear integer, non-linear real, algebraic data-types). Finally, we touch on approaches for solving quantified Horn clauses using algorithms developed in the context of symbolic model checking.<br>The tutorial will offer first-hand insights into central inner workings of quantified SMT. It will also offer hands on experiences within some of the fragments handled by the described approaches. <br>Z3 is an open source SMT solver. It is available <a href="https://github.com/z3prover/bin">here</a></p>
+		</div>
+
+		<button id="darwiche" class="w3-block w3-white w3-border w3-border-white w3-hover-light-grey" onclick="window.location.href='http://web.cs.ucla.edu/~darwiche/'">
+			<div class="w3-row-padding w3-centered">
+				<div class="w3-half">
+					<img src="#"  alt="To be added" height=150>
+				</div>
+				<div class="w3-half">
+					<p><b>Sharad Malik<br>Princeton</b></p>
+					<p>Talk Title: <i>On the Role of Logic in Probabilistic Inference and Machine Learning</i></p>
+				</div>
+			</div>
+		</button>
+		<button onclick="openAbstract('darwiche_abstract')" class="w3-button" style="width:100%">Abstract & Presentation</button>
+		<div id="darwiche_abstract" class="w3-panel w3-display-container w3-border" style="text-align:justify;display:none">
+			<span onclick="this.parentElement.style.display='none'"	class="w3-button w3-theme w3-display-topright">x</span>
+			<div class="w3-display-topleft">
+				<span onclick="window.location.href='satsmt2017_AdnanDarwiche.pdf'"	class="w3-button w3-theme"><font color="black"> Download slides</font> <img src="filessave.png" height="20px"/></span>
+				<span onclick="window.location.href='https://youtu.be/xRxP2Wj4kuA'" class="w3-button w3-theme"><font color="black"> Talk Video</font> <i class="fa fa-arrow-right w3-text-black w3-medium"></i></span>
+			</div>
+				<p><br><br>I will discuss in this tutorial some fundamental roles of formal logic in probabilistic inference and machine learning. In particular, I will discuss four key probabilistic queries that are complete for the complexity classes NP, PP, NP^PP and PP^PP, showing how each of these probabilistic queries can be practically reduced to queries on logical formula. The treatment of these queries will be systematic and based on compiling corresponding problems into Boolean circuits with increasingly strong properties that guarantee linear-time probabilistic inference. I will also link the proposed approach to the recent "Beyond NP" initiative that calls for a similar systematic treatment when handling computational problems that are harder than NP. On the machine learning front, I will show how the proposed approach can be used to:<br>(a) learn statistical models from a combination of data and background knowledge (expressed using logical constraints);<br>(b) learn from a new class of more expressive datasets; and<br>(c) estimate parameters in closed-form in some cases. The tutorial will include a number of case studies and experimental results, showing the broad scope and competitiveness of the proposed techniques, while also highlighting situations where they are now the state of the art.</p>
+		</div>
+
+		<button id="lonsing" class="w3-block w3-white w3-border w3-border-white w3-hover-light-grey" onclick="window.location.href='http://www.kr.tuwien.ac.at/staff/lonsing/'">
+			<div class="w3-row-padding w3-centered">
+				<div class="w3-half">
+					<img src="#"  alt="To be added" height=150>
+				</div>
+				<div class="w3-half">
+					<p><b>Aarti Gupta<br>Princeton</b></p>
+					<p>Talk Title: <i>An Introduction to QBF Solving</i></p>
+				</div>
+			</div>
+		</button>
+		<button onclick="openAbstract('lonsing_abstract')" class="w3-button" style="width:100%">Abstract & Presentation</button>
+		<div id="lonsing_abstract" class="w3-panel w3-display-container w3-border" style="text-align:justify;display:none">
+			<span onclick="this.parentElement.style.display='none'"	class="w3-button w3-theme w3-display-topright">x</span>
+			<div class="w3-display-topleft">
+				<span onclick="window.location.href='satsmt2017_FlorianLonsing.pdf'"	class="w3-button w3-theme"><font color="black"> Download slides</font> <img src="filessave.png" height="20px"/></span>
+				<span onclick="window.location.href='qbce-prepro.tar.gz'" class="w3-button w3-theme"><font color="black"> Tutorial Content</font> <i class="fa fa-arrow-right w3-text-black w3-medium"></i></span>
+			</div>
+				<p><br><br>The logic of quantified Boolean formulas (QBF) extends propositional logic by explicit existential or universal quantification of propositional variables. The satisfiability problem of QBF is PSPACE-complete. Therefore, QBFs are a natural formalism to encode problems from the complexity class PSPACE or from subclasses in the polynomial hierarchy. QBF encodings of problems are potentially exponentially more succinct than encodings in propositional logic. <br>In this tutorial, we present an introduction to quantified Boolean formula (QBF) solving. Thereby, we focus on search-based QBF solving, which has its roots in the DPLL algorithm published in the 1960s. Modern search-based approaches implement conflict-driven clause learning (QCDCL). In QCDCL backtracking search is coupled with Q-resolution, a QBF proof system, to systematically derive new learned clauses from a formula. We outline the evolution from basic backtracking search to modern QCDCL. Additionally we present selected topics related to QBF applications such as preprocessing and certificate extraction. In the hands-on session, the participants are encouraged to implement parts of a QBF preprocessing tool in C.</p>
+		</div>
+
+		<button id="rabe" class="w3-block w3-white w3-border w3-border-white w3-hover-light-grey" onclick="window.location.href='https://people.eecs.berkeley.edu/~rabe/'">
+			<div class="w3-row-padding w3-centered">
+				<div class="w3-half">
+					<img src="#"  alt="To be added" height=150>
+				</div>
+				<div class="w3-half">
+					<p><b>Markus Rabe<br>University of California, Berkeley</b></p>
+					<p>Talk Title: <i>QBF Certification and Synthesis of Boolean Functions</i></p>
+				</div>
+			</div>
+		</button>
+		<button onclick="openAbstract('rabe_abstract')" class="w3-button" style="width:100%">Abstract & Presentation</button>
+		<div id="rabe_abstract" class="w3-panel w3-display-container w3-border" style="text-align:justify;display:none">
+			<span onclick="this.parentElement.style.display='none'"	class="w3-button w3-theme w3-display-topright">x</span>
+			<span onclick="window.location.href='satsmt2017_MarkusRabe.pdf'" class="w3-button w3-theme w3-display-topleft"><font color="black"> Download slides</font> <img src="filessave.png" height="20px"/></span>
+				<p><br><br>A certificate for a quantified Boolean formula (QBF) is a Skolem function mapping assignments to the universal variables to assignments to the existential variables, such that the function makes the formula valid. QBF certification can thus be seen as a process to synthesize a Boolean function. In the first part of this tutorial, I will discuss recent progress in algorithms for 2QBF that enable effective certification. In parts two and three, I will discuss 'functional synthesis' and 'Dependency QBF', two extensions of QBF that enable  to synthesize more general quantified Boolean formulas.</p>
+		</div>
+
+	</font>
+	</div>
+
+	<span class="anchor" id="programme"></span>
+
+	<div id="programmeContent" class="w3-panel w3-white w3-border-bottom w3-border-theme-d4 w3-padding-32 w3-animate-right w3-reponsive">
+		<h2>Programme</h2><br>
+		<div class="w3-bar w3-theme-l4">
+			<button class="w3-bar-item tabProgButton w3-button w3-border w3-theme" style="width:20%" onclick="openTabProg('tue5',0)">Tuesday<br>Dec 5</button>
+			<button class="w3-bar-item tabProgButton w3-button w3-border" style="width:20%" onclick="openTabProg('wed6',1)">Wednesday<br>Dec 6</button>
+			<button class="w3-bar-item tabProgButton w3-button w3-border" style="width:20%" onclick="openTabProg('thu7',2)">Thursday<br>Dec 7</button>
+			<button class="w3-bar-item tabProgButton w3-button w3-border" style="width:20%;" onclick="openTabProg('fri8',3)">Friday<br>Dec 8</button>
+			<button class="w3-bar-item tabProgButton w3-button w3-border" style="width:20%" onclick="openTabProg('sat9',4)">Saturday<br>Dec 9</button>
+		</div>
+
+		<div id="tue5" class="w3-cell-row tabProg w3-border w3-mobile">
+			<div class="w3-container w3-cell" style="width:17%">
+				<div class="w3-container" style="height:30px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">19:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">20:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">21:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">22:00</div>
+			</div>
+			<div class="w3-container w3-cell w3-rest"><font size="2px">
+				<div class="w3-display-container w3-border w3-theme-d3" style="height:80px;background-color: #0000FF">
+					<div class="w3-display-middle w3-text-black">Arrival</div>
+				</div>
+				<div class="w3-display-container w3-border w3-theme-light" style="height:250px">
+					<div class="w3-display-container w3-display-topleft">Dinner</div>
+					<div class="w3-display-container w3-display-bottomright">19:30 - 22:00</div>
+					<div class="w3-display-container w3-display-bottomleft"><i>Floating Restaurant</i></div>
+				</div>
+			</font>
+			</div>
+		</div>
+
+		<div id="wed6" class="w3-cell-row tabProg w3-border" style="display:none">
+			<div class="w3-container w3-cell" style="width:17%">
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">8:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">9:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">10:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">11:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">12:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">13:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">14:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">15:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">16:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">17:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">18:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">19:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">20:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">21:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">22:00</div>
+			</div>
+			<div class="w3-container w3-cell w3-rest"><font size="2px">
+				<div class="w3-display-container w3-border w3-theme-light" style="height:100px;">
+					<div class="w3-display-topleft">Breakfast</div>
+					<div class="w3-display-bottomright">07:30 - 08:30</div>
+					<div class="w3-display-bottomleft"><i>Floating Restaurant</i></div>
+				</div>
+				<div class="w3-display-container w3-border w3-theme-l1" style="height:50px;">
+					<div class="w3-display-topleft w3-text-black">Registration</div>
+					<div class="w3-display-bottomright w3-text-black">08:30 - 09:00</div>
+				</div>
+				<div class="w3-display-container w3-border w3-theme-l2" style="height:55px;">
+					<div class="w3-display-topleft">Introdution to FOL</div>
+					<div class="w3-display-bottomright">09:00 - 09:30</div>
+					<div class="w3-display-bottomleft"><i><a href="#venue">Akbar Hall B10 (ILI)</a></i></div>
+					<div class="w3-display-topright"></div>
+				</div>
+				<div class="w3-display-container w3-border w3-theme-l2" style="height:95px;">
+					<div class="w3-display-topleft"><a href="#lonsing" onclick="openAbstract('lonsing_abstract')">Florian Lec-1</a></div>
+					<div class="w3-display-bottomright">09:30 - 10:30</div>
+					<div class="w3-display-bottomleft"><i><a href="#venue">Akbar Hall B10 (ILI)</a></i></div>
+				</div>
+				<div class="w3-display-container w3-border w3-theme-light" style="height:50px;">
+					<div class="w3-display-topleft">Break</div>
+					<div class="w3-display-bottomright">10:30 - 11:00</div>
+					<div class="w3-display-bottomleft"><i>outside Akbar Hall</i></div>
+				</div>
+				<div class="w3-display-container w3-border w3-theme-l2" style="height:150px;">
+					<div class="w3-display-topleft"><a href="#lonsing" onclick="openAbstract('lonsing_abstract')">Florian Lec-2</a></div>
+					<div class="w3-display-bottomright">11:00 - 12:30</div>
+					<div class="w3-display-bottomleft"><i><a href="#venue">Akbar Hall B10 (ILI)</a></i></div>
+				</div>
+				<div class="w3-display-container w3-border w3-theme-light" style="height:150px;">
+					<div class="w3-display-topleft">Lunch</div>
+					<div class="w3-display-bottomright">12:30 - 14:00</div>
+					<div class="w3-display-bottomleft"><i>outside Akbar Hall</i></div>
+				</div>
+				<div class="w3-display-container w3-border w3-theme-l2" style="height:100px;">
+					<div class="w3-display-topleft"><a href="#lonsing" onclick="openAbstract('lonsing_abstract')">Florian Lec-3</a></div>
+					<div class="w3-display-bottomright">14:00 - 15:00</div>
+					<div class="w3-display-bottomleft"><i><a href="#venue">Akbar Hall B10 (ILI)</a></i></div>
+				</div>
+				<div class="w3-display-container w3-border w3-theme-l2" style="height:55px;">
+					<div class="w3-display-topleft w3-hide-small"><a href="#short_presentation">Short presentation I</a> (by M.K. Srivas)</div>
+					<div class="w3-display-topleft w3-hide-medium w3-hide-large"><a href="#short_presentation">Short presentation I</a><br>(by M.K. Srivas)</div>
+					<div class="w3-display-bottomright">15:00 - 15:30</div>
+					<div class="w3-display-bottomleft w3-hide-small"><i><a href="#venue">Akbar Hall B10 (ILI)</a></i></div>
+				</div>
+				<div class="w3-display-container w3-border w3-theme-light" style="height:45px;">
+					<div class="w3-display-topleft">Break</div>
+					<div class="w3-display-bottomright">15:30 - 16:00</div>
+					<div class="w3-display-bottomleft"><i>outside Akbar Hall</i></div>
+				</div>
+				<div class="w3-display-container w3-border w3-theme-l2" style="height:150px;">
+					<div class="w3-display-topleft">Hands-on session</div>
+					<div class="w3-display-bottomright">16:00 - 17:30</div>
+					<div class="w3-display-bottomleft"><i><a href="#venue">Akbar Hall B10 (ILI)</a></i></div>
+				</div>
+				<div class="w3-display-container w3-border" style="height:200px;"></div>
+				<div class="w3-display-container w3-border w3-theme-light" style="height:250px">
+					<div class="w3-display-container w3-display-topleft">Dinner</div>
+					<div class="w3-display-container w3-display-bottomright">19:30 - 22:00</div>
+					<div class="w3-display-bottomleft"><i>Floating Restaurant</i></div>
+				</div>
+			</font>
+			</div>
+		</div>
+
+		<div id="thu7" class="w3-cell-row tabProg w3-border" style="display:none">
+			<div class="w3-container w3-cell" style="width:17%">
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">8:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">9:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">10:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">11:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">12:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">13:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">14:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">15:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">16:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">17:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">18:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">19:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">20:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">21:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">22:00</div>
+			</div>
+			<div class="w3-container w3-cell w3-rest"><font size="2px">
+				<div class="w3-display-container w3-border w3-theme-light" style="height:150px;">
+					<div class="w3-display-topleft">Breakfast</div>
+					<div class="w3-display-bottomright">07:30 - 09:00</div>
+					<div class="w3-display-container w3-display-bottomleft"><i>Floating Restaurant</i></div>
+				</div>
+				<div class="w3-display-container w3-border w3-theme-l2" style="height:150px;">
+					<div class="w3-display-topleft"><a href="#bjorner" onclick="openAbstract('bjorner_abstract')">Nikolaj Lec-1</a></div>
+					<div class="w3-display-bottomright w3-text-black">09:00 - 10:30</div>
+					<div class="w3-display-container w3-display-bottomleft"><i><a href="#venue">Akbar Hall B10 (ILI)</a></i></div>
+				</div>
+				<div class="w3-display-container w3-border w3-theme-light" style="height:50px;">
+					<div class="w3-display-topleft">Break</div>
+					<div class="w3-display-bottomright">10:30 - 11:00</div>
+					<div class="w3-display-container w3-display-bottomleft"><i>outside Akbar Hall</i></div>
+				</div>
+				<div class="w3-display-container w3-border w3-theme-l2" style="height:150px;">
+					<div class="w3-display-topleft"><a href="#bjorner" onclick="openAbstract('bjorner_abstract')">Nikolaj Lec-2</a></div>
+					<div class="w3-display-bottomright">11:00 - 12:30</div>
+					<div class="w3-display-container w3-display-bottomleft"><i><a href="#venue">Akbar Hall B10 (ILI)</a></i></div>
+				</div>
+				<div class="w3-display-container w3-border w3-theme-light" style="height:150px;">
+					<div class="w3-display-topleft">Lunch</div>
+					<div class="w3-display-bottomright">12:30 - 14:00</div>
+					<div class="w3-display-container w3-display-bottomleft"><i>outside Akbar Hall</i></div>
+				</div>
+				<div class="w3-display-container w3-border w3-theme-l2" style="height:55px;">
+					<div class="w3-display-topleft w3-hide-small"><a href="#short_presentation">Short presentation II</a> (by Saurabh Joshi)</div>
+					<div class="w3-display-topleft w3-hide-medium w3-hide-large"><a href="#short_presentation">Short presentation II</a><br>(by Saurabh Joshi)</div>
+					<div class="w3-display-bottomright">14:00 - 14:30</div>
+					<div class="w3-display-container w3-display-bottomleft w3-hide-small"><i><a href="#venue">Akbar Hall B10 (ILI)</a></i></div>
+				</div>
+				<div class="w3-display-container w3-border w3-theme-l2" style="height:95px;">
+					<div class="w3-display-topleft"><a href="#short_presentation">Short presentations III</a><br>(by Shetal Shah, Divyesh Unadkat, Charles M. Babu & Manasij Mukherjee)</div>
+					<div class="w3-display-bottomright">14:30 - 15:30</div>
+					<div class="w3-display-container w3-display-bottomleft"><i><a href="#venue">Akbar Hall B10 (ILI)</a></i></div>
+				</div>
+				<div class="w3-display-container w3-border w3-theme-light" style="height:50px;">
+					<div class="w3-display-topleft">Break</div>
+					<div class="w3-display-bottomright">15:30 - 16:00</div>
+					<div class="w3-display-container w3-display-bottomleft"><i>outside Akbar Hall</i></div>
+				</div>
+				<div class="w3-display-container w3-border w3-theme-l2" style="height:150px;">
+					<div class="w3-display-topleft">Hands-on session</div>
+					<div class="w3-display-bottomright">16:00 - 17:30</div>
+					<div class="w3-display-container w3-display-bottomleft"><i><a href="#venue">Akbar Hall B10 (ILI)</a></i></div>
+				</div>
+				<div class="w3-display-container w3-border" style="height:200px;"></div>
+				<div class="w3-display-container w3-border w3-theme-l1" style="height:250px">
+					<div class="w3-display-container w3-display-topleft w3-text-black"><a href="#accommodation" onclick="openTab('banquet')">Banquet</a></div>
+					<div class="w3-display-container w3-display-bottomright w3-text-black">19:30 onwards</div>
+					<div class="w3-display-container w3-display-bottomleft w3-text-black"><i>Country Inn & Suites By Carlson Mysore</i></div>
+				</div>
+			</font>
+			</div>
+		</div>
+
+		<div id="fri8" class="w3-cell-row tabProg w3-border" style="display:none">
+			<div class="w3-container w3-cell" style="width:17%">
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">8:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">9:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">10:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">11:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">12:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">13:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">14:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">15:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">16:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">17:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">18:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">19:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">20:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">21:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">22:00</div>
+			</div>
+			<div class="w3-container w3-cell w3-rest"><font size="2px">
+				<div class="w3-display-container w3-border w3-theme-light" style="height:150px;">
+					<div class="w3-display-topleft">Breakfast</div>
+					<div class="w3-display-bottomright">07:30 - 09:00</div>
+					<div class="w3-display-container w3-display-bottomleft"><i>Floating Restaurant</i></div>
+				</div>
+				<div class="w3-display-container w3-border w3-theme-l2" style="height:150px;">
+					<div class="w3-display-topleft"><a href="#darwiche" onclick="openAbstract('darwiche_abstract')">Adnan Lec</a></div>
+					<div class="w3-display-bottomright">09:00 - 10:30</div>
+					<div class="w3-display-container w3-display-bottomleft"><i><a href="#venue">Akbar Hall B10 (ILI)</a></i></div>
+				</div>
+				<div class="w3-display-container w3-border w3-theme-light" style="height:50px;">
+					<div class="w3-display-topleft">Break</div>
+					<div class="w3-display-bottomright">10:30 - 11:00</div>
+					<div class="w3-display-container w3-display-bottomleft"><i>outside Akbar Hall</i></div>
+				</div>
+				<div class="w3-display-container w3-border w3-theme-l2" style="height:150px;">
+					<div class="w3-display-topleft"><a href="#rabe" onclick="openAbstract('rabe_abstract')">Markus Lec-1</a></div>
+					<div class="w3-display-bottomright">11:00 - 12:30</div>
+					<div class="w3-display-container w3-display-bottomleft"><i><a href="#venue">Akbar Hall B10 (ILI)</a></i></div>
+				</div>
+				<div class="w3-display-container w3-border w3-theme-light" style="height:150px;">
+					<div class="w3-display-topleft">Lunch</div>
+					<div class="w3-display-bottomright">12:30 - 14:00</div>
+					<div class="w3-display-container w3-display-bottomleft"><i>outside Akbar Hall</i></div>
+				</div>
+				<div class="w3-display-container w3-border w3-theme-l2" style="height:150px;">
+					<div class="w3-display-topleft"><a href="#rabe" onclick="openAbstract('rabe_abstract')">Markus Lec-2</a></div>
+					<div class="w3-display-bottomright">14:00 - 15:30</div>
+					<div class="w3-display-container w3-display-bottomleft"><i><a href="#venue">Akbar Hall B10 (ILI)</a></i></div>
+				</div>
+				<div class="w3-display-container w3-border w3-theme-light" style="height:50px;">
+					<div class="w3-display-topleft">Break</div>
+					<div class="w3-display-bottomright">15:30 - 16:00</div>
+					<div class="w3-display-container w3-display-bottomleft"><i>outside Akbar Hall</i></div>
+				</div>
+				<div class="w3-display-container w3-border w3-theme-l2" style="height:150px;">
+					<div class="w3-display-topleft">Hands-on session</div>
+					<div class="w3-display-bottomright">16:00 - 17:30</div>
+					<div class="w3-display-container w3-display-bottomleft"><i><a href="#venue">Akbar Hall B10 (ILI)</a></i></div>
+				</div>
+				<div class="w3-display-container w3-border" style="height:200px;"></div>
+				<div class="w3-display-container w3-border w3-theme-light" style="height:250px">
+					<div class="w3-display-container w3-display-topleft">Dinner</div>
+					<div class="w3-display-container w3-display-bottomright">19:30 - 22:00</div>
+					<div class="w3-display-container w3-display-bottomleft"><i>Floating Restaurant</i></div>
+				</div>
+			</div>
+		</font>
+		</div>
+
+		<div id="sat9" class="w3-cell-row tabProg w3-border" style="display:none">
+			<div class="w3-container w3-cell" style="width:17%">
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">8:00</div>
+				<div class="w3-container" style="height:50px"></div>
+				<div class="w3-container w3-border-top" style="height:50px">9:00</div>
+			</div>
+			<div class="w3-container w3-cell w3-rest"><font size="2px">
+				<div class="w3-display-container w3-border w3-theme-light" style="height:150px;">
+					<div class="w3-display-topleft">Breakfast</div>
+					<div class="w3-display-bottomright">07:30 - 09:00</div>
+					<div class="w3-display-container w3-display-bottomleft"><i>Floating Restaurant</i></div>
+				</div>
+				<div class="w3-display-container w3-border w3-theme-d3" style="height:60px;">
+					<div class="w3-display-middle w3-text-black">Departure</div>
+				</div>
+			</div>
+		</font>
+		</div>
+
+		<p>
+		<span class="anchor" id="short_presentation"></span>
+		<br>Short Presentation Details<br>
+		<ul>
+			<li>M.K. Srivas (<a href="#short_presentation" onclick="openAbstract('srivas_abstract')"><i>Loop Acceleration for C Programs</i></a>)</li>
+			<div id="srivas_abstract" class="w3-panel w3-display-container w3-border" style="text-align:justify;display:none">
+				<span onclick="this.parentElement.style.display='none'"	class="w3-button w3-theme w3-display-topright">x</span>
+				<span onclick="window.location.href='satsmt2017_shorttalk_Srivas.pdf'" class="w3-button w3-theme w3-display-topleft"><font color="black"> Download slides</font> <img src="filessave.png" height="20px"/></span>
+				<p><br><br>One of the main challenges in scaling formal verification to large programs lies in finding effective analysis techniques to handle loops.  Loop acceleration is one such technique where a loop is replaced by a piece of loop-free code representing (possibly an abstraction of) the cumulative behavior of the loop.  This problem can be formalized in terms of computing a "closed form" for the transitive closure of the loop body.  We describe an automatic method using SMT solving for loop acceleration of a certain restricted class of C programs.  We describe the challenges presence of overflow in C programs and the need for termination checking in the process pose in reducing this problem to SMT solving.  We describe the need for quantifier elimination and nonlinear SMT solving in our method and how we handle the same.<br>M.K. Srivas will present the context of the work, formalization of the problem and the general method.  Charles M.B. will present more details of the method including handling of overflow as part of his student presentation.</p>
+			</div>
+
+			<li>Saurabh Joshi (<a href="#short_presentation" onclick="openAbstract('joshi_abstract')"><i>Gerneralized Totalizer Encoding for Pseudo-Boolean Constraints</i></a>)</li>
+			<div id="joshi_abstract" class="w3-panel w3-display-container w3-border" style="text-align:justify;display:none">
+				<span onclick="this.parentElement.style.display='none'"	class="w3-button w3-theme w3-display-topright">x</span>
+				<span onclick="window.location.href='satsmt2017_shorttalk_SaurabhJoshi.pdf'" class="w3-button w3-theme w3-display-topleft"><font color="black"> Download slides</font> <img src="filessave.png" height="20px"/></span>
+				<p><br><br>In this talk I will present a generalization of Totalizer Encoding which is primarily used in cardinality constraints. The generalization of this encoding makes it suitable to encode Pseudo-Boolean constraints. This generalization is insensitive to the magnitude of the weights in the constraints, and is likely to perform well when the number of weight combinations are low. We show experimental results in support of our claim. This work was published in CP 2015. This encoding also helped OpenWBO secure 3rd position in PB 2016 evaluations.</p>
+			</div>
+
+			<li>Shetal Shah (<a href="#short_presentation" onclick="openAbstract('shah_abstract')"><i>Towards Parallel Boolean Functional Synthesis</i></a>)</li>
+			<div id="shah_abstract" class="w3-panel w3-display-container w3-border" style="text-align:justify;display:none">
+				<span onclick="this.parentElement.style.display='none'"	class="w3-button w3-theme w3-display-topright">x</span>
+				<span onclick="window.location.href='satsmt2017_shorttalk_ShetalShah.pdf'" class="w3-button w3-theme w3-display-topleft"><font color="black"> Download slides</font> <img src="filessave.png" height="20px"/></span>
+				<p><br><br>Given a relational specification $F(X, Y)$, where $X$ and $Y$ are sequences of input and output variables, we wish to synthesize each output as a function of the inputs such that the specification holds. This is called the Boolean functional synthesis problem and has applications in several areas. We propose the first parallel approach for solving this problem, using compositional and CEGAR-style reasoning as key building blocks. We show by means of extensive experiments that our approach outperforms existing tools on a large class of benchmarks.</p>
+			</div>
+
+			<li>Divyesh Unadkat (<a href="#short_presentation" onclick="openAbstract('unadkat_abstract')"><i>Verifying Array Manipulating Programs by Tiling</i></a>)</li>
+			<div id="unadkat_abstract" class="w3-panel w3-display-container w3-border" style="text-align:justify;display:none">
+				<span onclick="this.parentElement.style.display='none'"	class="w3-button w3-theme w3-display-topright">x</span>
+				<span onclick="window.location.href='satsmt2017_shorttalk_DivyeshUnadkat.pdf'" class="w3-button w3-theme w3-display-topleft"><font color="black"> Download slides</font> <img src="filessave.png" height="20px"/></span>
+				<p><br><br>Formally verifying properties of programs that manipulate arrays in loops is computationally challenging. We focus on a useful class of such programs, and present a novel property-driven verification method that first infers array access patterns in loops using simple heuristics, and then uses this information to compositionally prove universally quantified assertions about arrays. Specifically, we identify tiles of array access patterns in a loop, and use the tiling information to reduce the problem of checking a quantified assertion at the end of a loop to an inductive argument that checks only a slice of the assertion for a single iteration of the loop body. We use SMT solvers for this check as well as for checking if the tiles cover the range of indices of interest. We show that this method can be extended to programs with sequentially composed loops and nested loops as well. We have implemented our method in a tool called Tiler. Initial experiments show that Tiler outperforms several state-of-the-art tools on a suite of interesting benchmarks.<br>This work is published in SAS 2017. Link to the paper: https://link.springer.com/chapter/10.1007/978-3-319-66706-5_21</p>
+			</div>
+
+			<li>Charles M Babu (<a href="#short_presentation" onclick="openAbstract('babu_abstract')"><i>Loop Acceleration for C Programs in the Presence of Overflows</i></a>)</li>
+			<div id="babu_abstract" class="w3-panel w3-display-container w3-border" style="text-align:justify;display:none">
+				<span onclick="this.parentElement.style.display='none'"	class="w3-button w3-theme w3-display-topright">x</span>
+				<span onclick="window.location.href='satsmt2017_shorttalk_Charles.pdf'" class="w3-button w3-theme w3-display-topleft"><font color="black"> Download slides</font> <img src="filessave.png" height="20px"/></span>
+				<p><br><br>Loop acceleration is a symbolic technique for synthesizing a loop-free closed form expression representing the cumulative behavior of a given loop. This problem can be formalized in terms of solution to a (nested) quantified SMT formula. It has been shown that for a class of overflow-free C programs with restrictions on the form of expressions in assignment and conditional statements, this problem can be reduced to quantifier-free SMT solving. Presence of overflow complicates the quantifier elimination problem and introduces the need to check for termination of loop. We show how under certain conditions the required quantifier elimination can be accomplished without resorting to model enumeration.</p>
+			</div>
+
+			<li>Manasij Mukherjee (<a href="#short_presentation" onclick="openAbstract('mukherjee_abstract')"><i>Interprocedural Bounded-Model-Checking (BMC) with context sensitive function summaries</i></a>)</li>
+			<div id="mukherjee_abstract" class="w3-panel w3-display-container w3-border" style="text-align:justify;display:none">
+				<span onclick="this.parentElement.style.display='none'"	class="w3-button w3-theme w3-display-topright">x</span>
+				<span onclick="window.location.href='satsmt2017_shorttalk_ManasijMukherjee.pdf'" class="w3-button w3-theme w3-display-topleft"><font color="black"> Download slides</font> <img src="filessave.png" height="20px"/></span>
+				<p><br><br>In this talk, I will discuss a technique for Bounded-Model-Checking (BMC) that does not require traversing and inlining whole function bodies at each call site. This is achieved by computing and composing a set of function summaries. Computing a function summary from a function body and a calling context can be considered a best-effort quantifier elimination problem.<br>I plan to cover forward summaries that encapsulate the behavior of a function and property directed error summaries that can be used for checking weakest preconditions for an assertion failure. I will present some insight into the following questions we are studying.  (1) Can we use hybrid approaches that use over and under-approximations of function summaries? (2) Do such interprocedural BMC approaches perform better than conventional monolithic approaches that use inlining function bodies? It seems this is only possible with aggressive simplification and pruning of the summaries and verification conditions generated at each step. Determining the threshold for which this simplification becomes profitable is the goal of our ongoing work.</p>
+			</div>
+
+		</ul>
+		</p>
+	</div>
+
+	<span class="anchor" id="accommodation"></span>
+
+	<div id="accommodationContent" class="w3-panel w3-white w3-border-bottom w3-border-theme-d4 w3-padding-32 w3-animate-right w3-reponsive">
+		<h2>Accommodation</h2><br>
+		<div class="w3-bar w3-theme-l4">
+			<button class="w3-bar-item w3-button" onclick="openTab('stay')">Stay</button>
+			<button class="w3-bar-item w3-button" onclick="openTab('reach')">How to Reach</button>
+			<button class="w3-bar-item w3-button" onclick="openTab('general')">General Info</button>
+			<button class="w3-bar-item w3-button" onclick="openTab('banquet')">Banquet Location</button>
+		</div>
+
+		<div id="stay" class="w3-container tab w3-border">
+			<h3>Stay</h3>
+			<p>Accommodation and food will be organized without additional fee for all participants<br>
+			<br><i>at</i> </i>
+			<br><i>from</i> 5th December to 7th December.</p>
+		</div>
+		<div id="reach" class="w3-container tab w3-border" style="display:none">
+			<h3>How to Reach</h3>
+			<p>
+			<ol>
+				<li>How to get to IIIT Hyderabad from Rajiv Gandhi International Airport
+				<ol type="i">
+					<li>Bus:
+					<ul style="list-style-type:square">
+						<li>Where to find bus?
+							<br>From the airport bus bay, just outside arrivals exit.</li>
+                                                <li>Where to buy the ticket?
+                                                        <br>On the spot, and <a href="http://www.ksrtc.in/oprs-web/">one month advance online booking is possible</a>
+
+						<li>Where to get down?:
+							Near Gachibowli flyover.</li>
+					</ul>
+					</li>
+					<li>Cab:
+					<ul style="list-style-type:square">
+						<li>Where to find cabs?
+							<br>Airport arrivals (Meru/Radio cabs/Ola/Uber)</li>
+						<li>How to explain destination?
+							<br>Say IIIT-Hyderabad, beside gachibowli stadium</li>
+					</ul>
+					</li>
+				</ol>
+				</li>
+				<br>
+			</ol>
+			</p>
+		</div>
+		<div id="general" class="w3-container tab w3-border" style="display:none">
+			<h3>General Information</h3>
+			<p>TO BE DECIDED</p>
+		</div>
+		<div id="banquet" class="w3-container tab w3-border" style="display:none">
+			<h3>Banquet to be decided</h3>
+			<p>Banquet is organised at <i><a href="https://www.countryinns.com/mysore-hotel-ka-570016/indcxms">Country Inn & Suites By Carlson Mysore</a></i> on the evening of 7th Dec from 19:30 onwards.</p>
+			<p><br>(The 'Infosys bus stop' in the map is right outside the Gate No. 2)</p>
+			<iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d3895.3913932591017!2d76.60102551441516!3d12.360687731333476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x3baf7a35da86e5e1%3A0xe5815405adf605e7!2sInfosys+Bus+Stop%2C+Hebbal+Industrial+Estate%2C+Hebbal+Industrial+Area%2C+Ilavala+Hobli%2C+Karnataka!3m2!1d12.357883099999999!2d76.6002779!4m5!1s0x3baf7a30a28a595f%3A0x2c15ecbcba1372b8!2sCountry+Inn+%26+Suites+By+Carlson+Mysore%2C+Plot+No.+345%2FA%2C+Hebbal+Industrial+Area%2C+Near+Infosys+Campus%2C+Hebbal+Industrial+Estate%2C+Hebbal%2C+Mysuru%2C+Karnataka+570016!3m2!1d12.3634185!2d76.6061505!5e0!3m2!1sen!2sin!4v1512637445898" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen onclick=></iframe>
+		</div>
+	</div>
+
+	<span class="anchor" id="tourism"></span>
+
+	<span class="anchor" id="impdates"></span>
+
+	<div id="impdatesContent" class="w3-panel w3-white w3-border-bottom w3-border-theme-d4 w3-padding-32 w3-animate-right w3-reponsive">
+		<h2>Important Dates</h2><br>
+		<table class="w3-table w3-border w3-bordered">
+			<tr>
+				<td>Opening of registration</td>
+                                <td>:</td>
+				<td><del>25th September, 2017</del></td>
+			</tr>
+			<tr>
+				<td>Application deadline</td>
+				<td>:</td>
+				<td><del>20th October, 2017</del>(Industry registration is still open!)</td>
+			</tr>
+			<tr>
+				<td>Acceptance announcement</td>
+				<td>:</td>
+				<td>22nd October, 2017</td>
+			</tr>
+			<tr>
+				<td>School dates</td>
+				<td>:</td>
+				<td>5-7 December, 2018</td>
+			</tr>
+		</table>
+	</div>
+	
+	<span class="anchor" id="organizers"></span>
+
+	<div id="organizersContent" class="w3-panel w3-white w3-border-bottom w3-border-theme-d4 w3-padding-32 w3-animate-right">
+		<h2>Organizers</h2><br>
+		<h4>School Organizers</h4>
+		<ul>
+			<li><a href="https://www.cse.iitb.ac.in/~supratik/">Supratik Chakraborty</a>, IIT Bombay</li>
+			<li><a href="http://www.tcs.tifr.res.in/~agupta/">Ashutosh Gupta</a>, IIT Bonbay</li>
+			<li><a href="http://www.cse.iitd.ac.in/~svs/">Subodh Sharma</a>, IIT Delhi</li>
+			<li><a href="#">Saurabh Joshi</a>, IIT Hyderabad</li>
+			<li><a href="#">Venkatesh Chopella</a>, IIIT Hyderabad</li>
+		</ul>
+	</div>
+
+	<span class="anchor" id="contact"></span>
+	
+	<div id="contactContent" class="w3-panel w3-white w3-border-bottom w3-border-theme-d4 w3-padding-32 w3-animate-right">
+	<font color=#1C2833>
+		<h2>Reach Us</h2>
+		<b>Email:</b> <a href="mailto:indian.satsmt.school@gmail.com?subject=The Second Indian SAT+SMT School "> indian.satsmt.school@gmail.com</a>
+		
+		<p><br><h4>Emergency Contacts</h4></p>
+		<p>
+			<table class="w3-table w3-mobile" style="width:50%">
+				<tr>
+					<td>Ashutosh Gupta</td>
+					<td>:</td>
+					<td>+91 9869503024</td>
+				</tr>
+				<tr>
+					<td>Supratik Chakraborty</td>
+					<td>:</td>
+					<td>+91 9820103723</td>
+				</tr>
+			</table>
+		</p>
+	</font>	
+	</div>
+  
+</div>
+
+</div>
+	<footer class="w3-container w3-theme-l2 w3-padding-16" style="z-index:3; position:relative">
+		©2017 Sat-Smt School
+		<a href="mailto:webmaster@sat-smt.in?subject=The Second Indian SAT+SMT School " class="webmaster">webmaster</a>
+	</footer>
+</div>
+
+</body>
+</html>
+
+
+<script type="text/javascript" src="aux.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
